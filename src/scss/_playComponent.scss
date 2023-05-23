@@ -1,59 +1,92 @@
-.play{
+/** @format */
 
-    width: 100%;
-    position: relative;
-    margin-top: 3.125rem;
+.play {
+  width: 100%;
+  position: relative;
+  margin-top: 3.125rem;
+  display: flex;
+  flex-direction: column;
+
+  .triangle {
+    position: absolute;
+    align-self: center;
+    margin-top: 4.375rem;
+  }
+
+  .items {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
 
-    .triangle{
-        position: absolute;
-        align-self: center;
-        margin-top: 4.375rem;
-    }
+    .icon {
+      height: 160px;
+      width: 160px;
+      border: 18px solid;
+      border-radius: 50%;
+      transition: transform 0.2s;
 
-    .items{
-        display: flex;
-        justify-content: center;
+      &--paper {
+        @include icon($imageP, $paper-gradient);
+        transform: translateX(1.5rem);
 
-        .icon{
-            height: 160px;
-            width: 160px;
-            border: 18px solid;
-            border-radius: 50%;
-            transition: transform .2s;
-
-            &--paper{
-                @include icon($imageP,$paper-gradient);
-                transform: translateX(1.5rem);
-                
-                &:hover{
-                transform: translateX(1.5rem) scale(1.1);
-
-                }
-
-            }
-            &--scissors{
-                @include icon($imageS,$scissors-gradient);
-                transform: translateX(8rem);
-
-                &:hover{
-                    transform: translateX(8rem) scale(1.1);
-
-
-                }
-            }
-            &--rock{
-                @include icon($imageR,$rock-gradient);
-                transform: translateX(-10rem) translateY(13rem);
-            
-
-                &:hover{
-                    transform: translateX(-10rem) translateY(13rem) scale(1.1);
-
-                }
-            
-            }
+        &:hover {
+          transform: translateX(1.5rem) scale(1.1);
         }
+      }
+      &--scissors {
+        @include icon($imageS, $scissors-gradient);
+        transform: translateX(8rem);
+
+        &:hover {
+          transform: translateX(8rem) scale(1.1);
+        }
+      }
+      &--rock {
+        @include icon($imageR, $rock-gradient);
+        transform: translateX(-10rem) translateY(13rem);
+
+        &:hover {
+          transform: translateX(-10rem) translateY(13rem) scale(1.1);
+        }
+      }
     }
+  }
+}
+@media screen and (max-width: 768px) {
+  .play {
+    max-width: 100%;
+    .triangle {
+      height: 170px;
+    }
+    .items {
+      .icon {
+        height: 120px;
+        width: 120px;
+        border: 14px solid;
+        &--paper {
+          @include icon($imageP, $paper-gradient);
+          transform: translateX(30px) translateY(20px);
+
+          &:hover {
+            transform: translateX(31px) translateY(22px) scale(1.1);
+          }
+        }
+        &--scissors {
+          @include icon($imageS, $scissors-gradient);
+          transform: translateX(90px) translateY(20px);
+
+          &:hover {
+            transform: translateX(91px) translateY(22px) scale(1.1);
+          }
+        }
+        &--rock {
+          @include icon($imageR, $rock-gradient);
+          transform: translateX(-123px) translateY(170px);
+
+          &:hover {
+            transform: translateX(-125px) translateY(170px) scale(1.1);
+          }
+        }
+      }
+    }
+  }
 }

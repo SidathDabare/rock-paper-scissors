@@ -1,47 +1,97 @@
-.modal-container{
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.374);
+/** @format */
 
+.modal-container {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.374);
 
-    .modal-box{
-        color: $dark-text;
-        background-color: #fff;
-        border-radius: 8px;
-        padding: 30px;
+  .modal-box {
+    color: $dark-text;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 30px;
 
-        img{
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .modal__header{
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 30px;
-
-            h1{
-                text-transform: uppercase;
-                margin: 0;
-                padding: 0;
-            }
-        }
+    img {
+      width: 100%;
+      object-fit: cover;
     }
 
-    button{
-        background:none ;
-        border: none;
-        align-self: center;
-        color: $dark-text;
+    .modal__header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
 
-        &:hover{
-            cursor: pointer;
-        }
-
+      h1 {
+        text-transform: uppercase;
+        margin: 0;
+        padding: 0;
+      }
     }
+  }
+
+  button {
+    background: none;
+    border: none;
+    align-self: center;
+    color: $dark-text;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .modal-container {
+    .modal-box {
+      height: 100%;
+      width: 100%;
+      .modal__header {
+        display: flex;
+        justify-content: center;
+        h1 {
+          padding: 50px 0 0 0;
+        }
+        button {
+          position: absolute;
+          margin: 0 auto;
+          right: 0;
+          left: 0;
+          bottom: 80px;
+          height: 20px;
+          width: 20px;
+          img {
+            height: 20px;
+            width: 20px;
+          }
+        }
+      }
+      img {
+        max-width: 70%;
+        margin: 20% auto;
+      }
+    }
+  }
+}
+@media screen and (max-width: 376px) {
+  .modal-container {
+    .modal-box {
+      .modal__header {
+        button {
+          img {
+            height: 20px;
+            width: 20px;
+          }
+        }
+      }
+      img {
+        max-width: 70%;
+        margin: 35% auto;
+      }
+    }
+  }
 }
