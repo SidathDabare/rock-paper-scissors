@@ -8,6 +8,7 @@ const GameLogicComponent = (props) => {
 
   const [playerWin, setPlayerWin] = useState("")
   const [house, setHouse] = useState("")
+  const [counter, setCounter] = useState(3)
 
   const houseSelected = () => {
     const choices = ["rock", "paper", "scissors"]
@@ -72,18 +73,62 @@ const GameLogicComponent = (props) => {
     }
   }
   useEffect(() => {
-    result()
-  }, [house])
+    const timer =
+      counter > 0
+        ? setInterval(() => {
+            setCounter(counter - 1)
+          }, 1000)
+        : result()
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [counter, house])
   return (
     <div className='game'>
-      MyChice:{selected} <br />
-      House:{house}
-      Result: {playerWin === "win" && <h2> you win</h2>}
-      {playerWin === "lose" && <h2> you lose</h2>}
-      {playerWin === "draw" && <h2> Draw</h2>}
-      <Link to='/' onClick={() => setHouse()}>
-        Play Again
-      </Link>
+      <div className='game__you'>
+        <span className='text'>You Picked</span>
+        <div
+          className={`icon icon--${selected} ${
+            playerWin === "win" ? `icon icon--${selected}--winner` : ""
+          }`}></div>
+      </div>
+      {playerWin === "win" && (
+        <div className='game__play'>
+          <span className='text'>You Win</span>
+          <Link to='/' className='play-again' onClick={() => setHouse()}>
+            Play Again
+          </Link>
+        </div>
+      )}
+      {playerWin === "lose" && (
+        <div className='game__play'>
+          <span className='text'>You Lose</span>
+          <Link to='/' className='play-again' onClick={() => setHouse()}>
+            Play Again
+          </Link>
+        </div>
+      )}
+      {playerWin === "draw" && (
+        <div className='game__play'>
+          <span className='text'>Draw</span>
+          <Link to='/' className='play-again' onClick={() => setHouse()}>
+            Play Again
+          </Link>
+        </div>
+      )}
+
+      <div className='game__house'>
+        <span className='text'>The House Picked</span>
+        {counter === 0 ? (
+          <div
+            className={`icon icon--${house} ${
+              playerWin === "lose" ? `icon icon--${house}--winner` : ""
+            }`}></div>
+        ) : (
+          <div className='counter'>{counter}</div>
+        )}
+      </div>
     </div>
   )
 }

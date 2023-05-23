@@ -1,0 +1,33 @@
+/** @format */
+
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  color: #fff;
+  background: $background-gradient;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media screen and (max-width: 768px) {
+  .App {
+    min-width: 90%;
+    width: 90%;
+    margin: 0 auto;
+    background-color: aqua;
+  }
+}
