@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const GameLogicComponent = (props) => {
   const { selected, score, setScore } = props
@@ -9,6 +9,7 @@ const GameLogicComponent = (props) => {
   const [playerWin, setPlayerWin] = useState("")
   const [house, setHouse] = useState("")
   const [counter, setCounter] = useState(3)
+  const navigate = useNavigate()
 
   const houseSelected = () => {
     const choices = ["rock", "paper", "scissors"]
@@ -73,6 +74,10 @@ const GameLogicComponent = (props) => {
     }
   }
   useEffect(() => {
+    const timerGoBack = setTimeout(() => {
+      navigate("/")
+    }, 5000)
+
     const timer =
       counter > 0
         ? setInterval(() => {
@@ -82,6 +87,7 @@ const GameLogicComponent = (props) => {
 
     return () => {
       clearInterval(timer)
+      clearTimeout(timerGoBack)
     }
   }, [counter, house])
   return (
