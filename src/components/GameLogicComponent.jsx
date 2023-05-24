@@ -75,7 +75,7 @@ const GameLogicComponent = (props) => {
   }
   useEffect(() => {
     const timerGoBack = setTimeout(() => {
-      navigate("/")
+      navigate("/rock-paper-scissors")
     }, 5000)
 
     const timer =
@@ -102,7 +102,10 @@ const GameLogicComponent = (props) => {
       {playerWin === "win" && (
         <div className='game__play'>
           <span className='text'>You Win</span>
-          <Link to='/' className='play-again' onClick={() => setHouse()}>
+          <Link
+            to='/rock-paper-scissors'
+            className='play-again'
+            onClick={() => setHouse()}>
             Play Again
           </Link>
         </div>
@@ -110,7 +113,10 @@ const GameLogicComponent = (props) => {
       {playerWin === "lose" && (
         <div className='game__play'>
           <span className='text'>You Lose</span>
-          <Link to='/' className='play-again' onClick={() => setHouse()}>
+          <Link
+            to='/rock-paper-scissors'
+            className='play-again'
+            onClick={() => setHouse()}>
             Play Again
           </Link>
         </div>
@@ -118,7 +124,10 @@ const GameLogicComponent = (props) => {
       {playerWin === "draw" && (
         <div className='game__play'>
           <span className='text'>Draw</span>
-          <Link to='/' className='play-again' onClick={() => setHouse()}>
+          <Link
+            to='/rock-paper-scissors'
+            className='play-again'
+            onClick={() => setHouse()}>
             Play Again
           </Link>
         </div>

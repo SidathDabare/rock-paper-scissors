@@ -17,11 +17,11 @@ function App() {
         <Header score={score} />
         <Routes>
           <Route
-            path='/'
+            path='/rock-paper-scissors'
             element={<PlayerComponent setSelected={setSelected} />}
           />
           <Route
-            path='logic'
+            path='/logic'
             element={
               <GameLogicComponent
                 selected={selected}
